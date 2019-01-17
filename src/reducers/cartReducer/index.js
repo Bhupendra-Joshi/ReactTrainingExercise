@@ -3,22 +3,18 @@ import {
     ACTION_TYPES
 } from '../../constants'
 
-export const cartReducer = (state = data.cart, action) => {
+export const cartReducer = (cart = data.cart, action) => {
     switch (action.type) {
 
         case ACTION_TYPES.ACTION_TYPE_ADD_TO_CART:{
-            let productExistsInCart = false;
-            let products =  state.map(product => {
-                if(product.id === action.product.id){
-                    productExistsInCart = true;
-                    return {...product, quantity : product.quantity + 1}
-                }
-                return product
-            })
-            if(!productExistsInCart){
-                products = [...state, {...action.product, quantity : 1}]
+            let product = cart[action.product.id];
+            if(product){
+                product.quantity += 1;
+            }else{
+                cart[action.product.id] = {...action.product, quantity : 1}
             }
-            return products;
+            return {...cart}
+
         }
 
         // case ACTION_TYPES.ACTION_TYPE_INCREASE_QUANTITY:{
@@ -52,8 +48,8 @@ export const cartReducer = (state = data.cart, action) => {
         // }
 
         default:
-        console.log( "CART NEW STATE : ", state)
-        return state;
+        console.log( "CART NEW STATE : ", cart)
+        return cart;
     }
 
 }

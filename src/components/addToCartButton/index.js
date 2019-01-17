@@ -27,12 +27,7 @@ class AddToCartButton extends Component {
     };
 
     isProductAlreadyInTheCart = () => {
-        for(let i = 0; i < this.props.cart.length; i++){
-            if(this.props.cart[i].id === this.props.product.id){
-                return true;
-            }
-        }
-        return false;
+        return this.props.cart[this.props.product.id]
     };
 }
 
