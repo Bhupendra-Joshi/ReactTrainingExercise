@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-import ProductDetailsTile from './components/productDetailsTile';
 import { connect } from 'react-redux';
+import ProductListContainer from './components/productList';
+import CartListContainer from './components/cartList';
 
 class App extends Component {
   render() {
     console.log("APP DATA",this.props)
     return (
       <div className="App">
-        {
-          this.props.products.map(product =>
-            <ProductDetailsTile product = {product} key = {product.id}/>
-          )
-        }
+        <ProductListContainer className="inner"/>
+        <CartListContainer className="inner"/>
       </div>
     );
   }

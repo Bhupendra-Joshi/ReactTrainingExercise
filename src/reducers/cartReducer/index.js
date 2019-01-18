@@ -30,9 +30,10 @@ export const cartReducer = (cart = data.cart, action) => {
         //     };
         // }
 
-        // case ACTION_TYPES.ACTION_TYPE_REMOVE_FROM_CART:{
-        //     return state;
-        // }
+        case ACTION_TYPES.ACTION_TYPE_REMOVE_FROM_CART:{
+            delete cart[action.product.id]
+            return {...cart};
+        }
 
         // case ACTION_TYPES.ACTION_TYPE_DECREASE_QUANTITY:{
         //     const products =  state.cart.map(product => {

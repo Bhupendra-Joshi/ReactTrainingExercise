@@ -211,7 +211,7 @@ export const data = {
         }
     ],
 
-    cart: []
+    cart: {}
 }
 
 
